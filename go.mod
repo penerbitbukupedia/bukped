@@ -5,6 +5,7 @@ go 1.20
 require (
 	github.com/aiteung/atdb v0.0.4
 	github.com/aiteung/musik v0.0.3
+	github.com/aiteung/presensi v0.0.12
 	github.com/gofiber/fiber/v2 v2.42.0
 	github.com/gofiber/websocket/v2 v2.1.4
 	github.com/whatsauth/whatsauth v0.1.82
@@ -13,6 +14,7 @@ require (
 require (
 	aidanwoods.dev/go-paseto v1.2.0 // indirect
 	filippo.io/edwards25519 v1.0.0 // indirect
+	github.com/aiteung/atmessage v0.0.2 // indirect
 	github.com/aiteung/atmodel v0.0.1 // indirect
 	github.com/andybalholm/brotli v1.0.4 // indirect
 	github.com/fasthttp/websocket v1.5.1 // indirect

@@ -9,10 +9,14 @@ github.com/Azure/azure-sdk-for-go/sdk/internal v1.0.0/go.mod h1:eWRD7oawr1Mu1sLC
 github.com/AzureAD/microsoft-authentication-library-for-go v0.5.1/go.mod h1:Vt9sXTKwMyGcOxSmLDMnGPgqsUg7m8pe215qMLrDXw4=
 github.com/aiteung/atdb v0.0.4 h1:aJ/R8DoP+Td3E9h0rwdfl0XTQV9Nyk1gc/cReh3lO8I=
 github.com/aiteung/atdb v0.0.4/go.mod h1:LpKJzlCiFzTCiIsRTO3olNTnP4dzrt0KB/hxUVicoqs=
+github.com/aiteung/atmessage v0.0.2 h1:5VOnDspFoxQfgy9C8yd4mr6EfNMpI2c44Xa16E4C8kU=
+github.com/aiteung/atmessage v0.0.2/go.mod h1:Jtm6W8M27R5Z7SgV7nOHWGv0AZ6JvwtCVBarlbcZvoo=
 github.com/aiteung/atmodel v0.0.1 h1:xT3EuSIYxTyZgsWKt09kYSqKCD4pLxc1IKl8FwQZGbY=
 github.com/aiteung/atmodel v0.0.1/go.mod h1:wIPSFdFR+AKRDFmToYJdXr+ck6vtzGnJvNz8TxvFFi4=
 github.com/aiteung/musik v0.0.3 h1:uNNchUcwMJozpgAHlI7p4MHNTMuRCoaeRoSEurdtYfk=
 github.com/aiteung/musik v0.0.3/go.mod h1:fwfzankgCEYSBSAp0FMuiLJoXvSaZk+lSWhgZZETFCs=
+github.com/aiteung/presensi v0.0.12 h1:eQQKk3eWdlcn90JrW4vfa8hZNhi49eSaDkTuEcdP0YU=
+github.com/aiteung/presensi v0.0.12/go.mod h1:ekb4czbsA3jL+p/Br5EbmT8hCzHmeuyK4fKylUz97xg=
 github.com/andybalholm/brotli v1.0.4 h1:V7DdXeJtZscaqfNuAdSRuRFzuiKlHSC/Zh3zl9qY3JY=
 github.com/andybalholm/brotli v1.0.4/go.mod h1:fO7iG3H7G2nSZ7m0zPUDn85XEX2GTukHGRSepvi9Eig=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
