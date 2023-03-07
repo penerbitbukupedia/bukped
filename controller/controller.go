@@ -1,12 +1,18 @@
 package controller
 
 import (
+	"github.com/aiteung/musik"
 	"github.com/gocroot/gocroot/config"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/websocket/v2"
 	"github.com/whatsauth/whatsauth"
 )
+
+func Homepage(c *fiber.Ctx) error {
+	ipaddr := musik.GetIPaddress()
+	return c.JSON(ipaddr)
+}
 
 func WsWhatsAuthQR(c *websocket.Conn) {
 	whatsauth.RunSocket(c, config.PublicKey, config.Usertables[:], config.Ulbimariaconn)
