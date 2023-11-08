@@ -1,14 +1,13 @@
 package config
 
 import (
-	"os"
 	"strings"
 
 	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 
 var origins = []string{
-	"https://adorableproject.github.io",
+	"https://pmb.ulbi.ac.id",
 	"https://auth.ulbi.ac.id",
 	"https://sip.ulbi.ac.id",
 	"https://euis.ulbi.ac.id",
@@ -17,13 +16,26 @@ var origins = []string{
 	"https://dias.ulbi.ac.id",
 	"https://iteung.ulbi.ac.id",
 	"https://whatsauth.github.io",
+	"https://pmb.ulbi.ac.id",
 }
 
-var Internalhost string = os.Getenv("INTERNALHOST") + ":" + os.Getenv("PORT")
+var headers = []string{
+	"Origin",
+	"Content-Type",
+	"Accept",
+	"Authorization",
+	"Access-Control-Request-Headers",
+	"Token",
+	"Login",
+	"Access-Control-Allow-Origin",
+	"Authorization",
+	"Bearer",
+	"X-Requested-With",
+}
 
 var Cors = cors.Config{
 	AllowOrigins:     strings.Join(origins[:], ","),
-	AllowHeaders:     "Origin",
+	AllowHeaders:     strings.Join(headers[:], ","),
 	ExposeHeaders:    "Content-Length",
 	AllowCredentials: true,
 }
