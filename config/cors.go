@@ -28,7 +28,6 @@ var headers = []string{
 	"Token",
 	"Login",
 	"Access-Control-Allow-Origin",
-	"Authorization",
 	"Bearer",
 	"X-Requested-With",
 }
