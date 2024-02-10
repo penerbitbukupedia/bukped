@@ -8,7 +8,7 @@ type Author struct {
 	Nama      string             `json:"nama,omitempty" bson:"nama,omitempty"`
 	NIK       string             `json:"nik,omitempty" bson:"nik,omitempty"`
 	Email     string             `json:"email,omitempty" bson:"email,omitempty"`
-	Whatsapp  string             `json:"wa,omitempty" bson:"wa,omitempty"`
+	Phone     string             `json:"phone,omitempty" bson:"phone,omitempty"`
 	Pekerjaan string             `json:"pekerjaan,omitempty" bson:"pekerjaan,omitempty"`
 	Alamat    string             `json:"alamat,omitempty" bson:"alamat,omitempty"`
 	Bio       string             `json:"bio,omitempty" bson:"bio,omitempty"`
