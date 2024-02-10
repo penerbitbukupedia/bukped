@@ -14,3 +14,7 @@ type Author struct {
 	Bio       string             `json:"bio,omitempty" bson:"bio,omitempty"`
 	Photo     string             `json:"photo,omitempty" bson:"photo,omitempty"`
 }
+
+type Login struct {
+	Login string `json:"login,omitempty" bson:"login,omitempty" query:"login" url:"login,omitempty" reqHeader:"login"`
+}

@@ -6,10 +6,13 @@ require (
 	github.com/aiteung/atdb v0.1.5
 	github.com/aiteung/musik v0.0.5
 	github.com/gofiber/fiber/v2 v2.52.0
+	github.com/whatsauth/watoken v0.1.6
 	go.mongodb.org/mongo-driver v1.11.6
 )
 
 require (
+	aidanwoods.dev/go-paseto v1.5.0 // indirect
+	aidanwoods.dev/go-result v0.1.0 // indirect
 	filippo.io/edwards25519 v1.0.0 // indirect
 	github.com/andybalholm/brotli v1.0.5 // indirect
 	github.com/go-sql-driver/mysql v1.7.1 // indirect
@@ -26,6 +29,7 @@ require (
 	github.com/montanaflynn/stats v0.7.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
+	github.com/rogpeppe/go-internal v1.12.0 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.51.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
