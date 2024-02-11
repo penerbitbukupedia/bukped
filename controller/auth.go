@@ -23,10 +23,11 @@ func GetHeaderUserData(c *fiber.Ctx) error {
 		return fiber.ErrServiceUnavailable
 	}
 	var author model.Author
-	author.Phone = watoken.DecodeGetId(config.PublicKey, h.Login)
-	if author.Phone == "" {
+	phonenumber := watoken.DecodeGetId(config.PublicKey, h.Login)
+	if phonenumber == "" {
 		return fiber.ErrForbidden
 	}
 	author = atdb.GetOneDoc[model.Author](config.Ulbimongoconn, "author", bson.M{"phone": author.Phone})
+	author.Phone = phonenumber
 	return c.JSON(author)
 }
