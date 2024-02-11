@@ -10,4 +10,5 @@ func Web(page *fiber.App) {
 	page.Get("/", controller.Homepage)
 
 	page.Get("/auth/phonenumber/:login", controller.GetPhoneNumber)
+	page.Get("/auth/phonenumber", controller.GetPhoneNumber)
 }

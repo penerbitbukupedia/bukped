@@ -3,7 +3,7 @@ package model
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type Author struct {
-	ID        primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty" query:"id" url:"_id,omitempty" reqHeader:"id"`
+	ID        primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty" query:"id,omitempty" url:"_id,omitempty" reqHeader:"id"`
 	Profile   string             `json:"profile,omitempty" bson:"profile,omitempty"`
 	Nama      string             `json:"nama,omitempty" bson:"nama,omitempty"`
 	NIK       string             `json:"nik,omitempty" bson:"nik,omitempty"`

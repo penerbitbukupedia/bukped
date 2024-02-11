@@ -13,3 +13,11 @@ func GetPhoneNumber(c *fiber.Ctx) error {
 	author.Phone = watoken.DecodeGetId(config.PublicKey, c.Params("login"))
 	return c.JSON(author)
 }
+
+func GetHeaderPhoneNumber(c *fiber.Ctx) error {
+	var h model.Login
+	c.ReqHeaderParser(&h)
+	var author model.Author
+	author.Phone = watoken.DecodeGetId(config.PublicKey, h.Login)
+	return c.JSON(author)
+}
