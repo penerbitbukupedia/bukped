@@ -26,7 +26,7 @@ func GetHeaderUserData(c *fiber.Ctx) error {
 	if phonenumber == "" {
 		return fiber.ErrForbidden
 	}
-	author := atdb.GetOneDoc[model.Author](config.Ulbimongoconn, "author", bson.M{"phone": author.Phone})
+	author := atdb.GetOneDoc[model.Author](config.Ulbimongoconn, "author", bson.M{"phone": phonenumber})
 	author.Phone = phonenumber
 	return c.JSON(author)
 }
