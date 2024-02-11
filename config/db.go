@@ -8,9 +8,9 @@ import (
 
 var MongoString string = os.Getenv("MONGOSTRING")
 
-var DBUlbimongoinfo = atdb.DBInfo{
+var DBmongoinfo = atdb.DBInfo{
 	DBString: MongoString,
 	DBName:   "bukupedia",
 }
 
-var Ulbimongoconn = atdb.MongoConnect(DBUlbimongoinfo)
+var Mongoconn = atdb.MongoConnect(DBmongoinfo)

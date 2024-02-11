@@ -26,7 +26,7 @@ func GetHeaderUserData(c *fiber.Ctx) error {
 	if phonenumber == "" {
 		return fiber.ErrForbidden
 	}
-	author := atdb.GetOneDoc[model.Author](config.Ulbimongoconn, "author", bson.M{"phone": phonenumber})
+	author := atdb.GetOneDoc[model.Author](config.Mongoconn, "author", bson.M{"phone": phonenumber})
 	author.Phone = phonenumber
 	return c.JSON(author)
 }
@@ -37,11 +37,20 @@ func PostDaftarAuthor(c *fiber.Ctx) error {
 	if err != nil {
 		return fiber.ErrServiceUnavailable
 	}
-	var author model.Author
-	err = c.BodyParser(&author)
-	if err != nil {
-		return fiber.ErrBadRequest
+	phonenumber := watoken.DecodeGetId(config.PublicKey, h.Login)
+	if phonenumber == "" {
+		return fiber.ErrForbidden
 	}
-	author.Phone = watoken.DecodeGetId(config.PublicKey, c.Params("login"))
-	return c.JSON(author)
+	var author model.Author
+	if err := c.BodyParser(&author); err != nil {
+		if err != nil {
+			return fiber.ErrBadRequest
+		}
+		errors := model.ValidateAuthorStruct(author)
+		if errors != nil {
+			return c.JSON(errors)
+		}
+	}
+	insertedid := atdb.InsertOneDoc(config.Mongoconn, "author", author)
+	return c.JSON(insertedid)
 }
