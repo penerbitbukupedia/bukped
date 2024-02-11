@@ -14,7 +14,7 @@ func GetPhoneNumber(c *fiber.Ctx) error {
 	return c.JSON(author)
 }
 
-func GetHeaderPhoneNumber(c *fiber.Ctx) error {
+func GetHeaderUserData(c *fiber.Ctx) error {
 	var h model.Login
 	c.ReqHeaderParser(&h)
 	var author model.Author
