@@ -12,5 +12,5 @@ func Web(page *fiber.App) {
 	page.Get("/auth/phonenumber/:login", controller.GetPhoneNumber)
 	page.Get("/auth/userdata", controller.GetHeaderUserData)
 
-	page.Post("/auth/daftar", controller.GetHeaderUserData)
+	page.Post("/auth/daftar", controller.PostDaftarAuthor)
 }
