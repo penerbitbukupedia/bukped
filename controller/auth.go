@@ -42,6 +42,7 @@ func PostDaftarAuthor(c *fiber.Ctx) error {
 		return fiber.ErrForbidden
 	}
 	var author model.Author
+	author.Phone = phonenumber
 	if err := c.BodyParser(&author); err != nil {
 		if err != nil {
 			return fiber.ErrBadRequest

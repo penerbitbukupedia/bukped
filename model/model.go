@@ -11,7 +11,7 @@ type Author struct {
 	Nama      string             `json:"nama,omitempty" bson:"nama,omitempty" validate:"required,min=2"`
 	NIK       string             `json:"nik,omitempty" bson:"nik,omitempty" validate:"required,number,min=16"`
 	Email     string             `json:"email,omitempty" bson:"email,omitempty" validate:"required,email,min=6"`
-	Phone     string             `json:"phone,omitempty" bson:"phone,omitempty" validate:"required,number"`
+	Phone     string             `json:"phone,omitempty" bson:"phone,omitempty"`
 	Pekerjaan string             `json:"pekerjaan,omitempty" bson:"pekerjaan,omitempty" validate:"required,number"`
 	Alamat    string             `json:"alamat,omitempty" bson:"alamat,omitempty" validate:"required,number"`
 	Bio       string             `json:"bio,omitempty" bson:"bio,omitempty"`
