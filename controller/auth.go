@@ -30,3 +30,18 @@ func GetHeaderUserData(c *fiber.Ctx) error {
 	author.Phone = phonenumber
 	return c.JSON(author)
 }
+
+func PostDaftarAuthor(c *fiber.Ctx) error {
+	var h model.Login
+	err := c.ReqHeaderParser(&h)
+	if err != nil {
+		return fiber.ErrServiceUnavailable
+	}
+	var author model.Author
+	err = c.BodyParser(&author)
+	if err != nil {
+		return fiber.ErrBadRequest
+	}
+	author.Phone = watoken.DecodeGetId(config.PublicKey, c.Params("login"))
+	return c.JSON(author)
+}
