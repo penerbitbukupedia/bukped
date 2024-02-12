@@ -4,23 +4,16 @@ import (
 	"context"
 	"encoding/base64"
 	"gocroot/config"
-	"io"
-	"mime/multipart"
+	"os"
 
 	"github.com/google/go-github/v59/github"
 
 	"golang.org/x/oauth2"
 )
 
-func GithubUpload(fileHeader *multipart.FileHeader) (content *github.RepositoryContentResponse, response *github.Response, err error) {
-	// Open the file
-	file, err := fileHeader.Open()
-	if err != nil {
-		return
-	}
-	defer file.Close()
-	// Read the file content
-	fileContent, err := io.ReadAll(file)
+func GithubUpload(filePath string) (content *github.RepositoryContentResponse, response *github.Response, err error) {
+	// Read the file
+	fileContent, err := os.ReadFile(filePath)
 	if err != nil {
 		return
 	}
@@ -48,7 +41,7 @@ func GithubUpload(fileHeader *multipart.FileHeader) (content *github.RepositoryC
 	}
 
 	// Membuat permintaan untuk mengunggah file
-	content, response, err = client.Repositories.CreateFile(ctx, config.GitHubOwner, config.GitHubRepo, fileHeader.Filename, opts)
+	content, response, err = client.Repositories.CreateFile(ctx, config.GitHubOwner, config.GitHubRepo, filePath, opts)
 	if err != nil {
 		return
 	}
