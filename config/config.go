@@ -9,3 +9,5 @@ var Iteung = fiber.Config{
 	ServerHeader:  "Iteung",
 	AppName:       "Message Router",
 }
+
+const UploadDir = "./uploads"

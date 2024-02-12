@@ -5,19 +5,25 @@ import (
 	"encoding/base64"
 	"fmt"
 	"gocroot/config"
-	"os"
+	"io"
+	"mime/multipart"
 
-	"github.com/google/go-github/v38/github"
+	"github.com/google/go-github/v59/github"
 
 	"golang.org/x/oauth2"
 )
 
-func GithubUpload(filePath string) {
-	// Membaca file
-	fileContent, err := os.ReadFile(filePath)
+func GithubUpload(fileHeader *multipart.FileHeader) (err error) {
+	// Open the file
+	file, err := fileHeader.Open()
 	if err != nil {
-		fmt.Println("Error reading file:", err)
-		return
+		return fmt.Errorf("error opening file: %w", err)
+	}
+	defer file.Close()
+	// Read the file content
+	fileContent, err := io.ReadAll(file)
+	if err != nil {
+		return fmt.Errorf("error reading file content: %w", err)
 	}
 
 	// Mengkodekan isi file ke base64
@@ -43,11 +49,9 @@ func GithubUpload(filePath string) {
 	}
 
 	// Membuat permintaan untuk mengunggah file
-	_, _, err = client.Repositories.CreateFile(ctx, config.GitHubOwner, config.GitHubRepo, filePath, opts)
+	_, _, err = client.Repositories.CreateFile(ctx, config.GitHubOwner, config.GitHubRepo, fileHeader.Filename, opts)
 	if err != nil {
-		fmt.Println("Error creating file:", err)
-		return
+		return err
 	}
-
-	fmt.Println("File uploaded successfully.")
+	return
 }
