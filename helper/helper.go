@@ -46,7 +46,9 @@ func GithubUpload(fileHeader *multipart.FileHeader) (content *github.RepositoryC
 	// Membuat permintaan untuk mengunggah file
 	content, response, err = client.Repositories.CreateFile(ctx, config.GitHubOwner, config.GitHubRepo, fileHeader.Filename, opts)
 	if err != nil {
+		content, response, err = client.Repositories.UpdateFile(ctx, config.GitHubOwner, config.GitHubRepo, fileHeader.Filename, opts)
 		return
 	}
+
 	return
 }
