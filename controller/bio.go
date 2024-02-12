@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"gocroot/config"
 	"gocroot/helper"
 
 	"github.com/gofiber/fiber/v2"
@@ -14,11 +13,11 @@ func UploadFile(ctx *fiber.Ctx) error {
 		return ctx.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": err.Error()})
 	}
 	// save to github
-	err = helper.GithubUpload(file)
+	content, response, err := helper.GithubUpload(file)
 	if err != nil {
 		return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": err.Error()})
 	}
 
-	return ctx.Status(fiber.StatusOK).JSON(fiber.Map{"filename": config.UploadDir + file.Filename, "content": file.Filename})
+	return ctx.Status(fiber.StatusOK).JSON(fiber.Map{"content": content, "response": response})
 
 }

@@ -3,7 +3,6 @@ package helper
 import (
 	"context"
 	"encoding/base64"
-	"fmt"
 	"gocroot/config"
 	"io"
 	"mime/multipart"
@@ -13,17 +12,17 @@ import (
 	"golang.org/x/oauth2"
 )
 
-func GithubUpload(fileHeader *multipart.FileHeader) (err error) {
+func GithubUpload(fileHeader *multipart.FileHeader) (content *github.RepositoryContentResponse, response *github.Response, err error) {
 	// Open the file
 	file, err := fileHeader.Open()
 	if err != nil {
-		return fmt.Errorf("error opening file: %w", err)
+		return
 	}
 	defer file.Close()
 	// Read the file content
 	fileContent, err := io.ReadAll(file)
 	if err != nil {
-		return fmt.Errorf("error reading file content: %w", err)
+		return
 	}
 
 	// Mengkodekan isi file ke base64
@@ -49,9 +48,9 @@ func GithubUpload(fileHeader *multipart.FileHeader) (err error) {
 	}
 
 	// Membuat permintaan untuk mengunggah file
-	_, _, err = client.Repositories.CreateFile(ctx, config.GitHubOwner, config.GitHubRepo, fileHeader.Filename, opts)
+	content, response, err = client.Repositories.CreateFile(ctx, config.GitHubOwner, config.GitHubRepo, fileHeader.Filename, opts)
 	if err != nil {
-		return err
+		return
 	}
 	return
 }
