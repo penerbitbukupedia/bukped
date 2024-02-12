@@ -52,7 +52,7 @@ func PostDaftarAuthor(c *fiber.Ctx) error {
 			return c.JSON(errors)
 		}
 	}
-	if author.NIK == "" {
+	if author.ID.String() == "000000000000000000000000" {
 		insertedid := atdb.InsertOneDoc(config.Mongoconn, "author", author)
 		return c.JSON(insertedid)
 	}
