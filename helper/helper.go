@@ -2,7 +2,6 @@ package helper
 
 import (
 	"context"
-	"encoding/base64"
 	"gocroot/config"
 	"io"
 	"mime/multipart"
@@ -25,9 +24,6 @@ func GithubUpload(fileHeader *multipart.FileHeader) (content *github.RepositoryC
 		return
 	}
 
-	// Mengkodekan isi file ke base64
-	encodedContent := base64.StdEncoding.EncodeToString(fileContent)
-
 	// Konfigurasi koneksi ke GitHub menggunakan token akses
 	ctx := context.Background()
 	ts := oauth2.StaticTokenSource(
@@ -39,7 +35,7 @@ func GithubUpload(fileHeader *multipart.FileHeader) (content *github.RepositoryC
 	// Membuat opsi untuk mengunggah file
 	opts := &github.RepositoryContentFileOptions{
 		Message: github.String("Upload file"),
-		Content: []byte(encodedContent),
+		Content: fileContent,
 		Branch:  github.String("main"),
 		Author: &github.CommitAuthor{
 			Name:  github.String(config.GitHubAuthorName),
