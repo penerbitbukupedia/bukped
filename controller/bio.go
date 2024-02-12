@@ -6,7 +6,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func UploadFile(ctx *fiber.Ctx) error {
+func UploadFotoProfil(ctx *fiber.Ctx) error {
 	// Parse the form file
 	file, err := ctx.FormFile("image")
 	if err != nil {

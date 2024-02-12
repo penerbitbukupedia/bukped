@@ -13,4 +13,5 @@ func Web(page *fiber.App) {
 	page.Get("/auth/userdata", controller.GetHeaderUserData)
 
 	page.Post("/auth/daftar", controller.PostDaftarAuthor)
+	page.Post("/auth/upload/image/profil", controller.UploadFotoProfil)
 }
