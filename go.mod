@@ -8,7 +8,6 @@ require (
 	github.com/go-playground/validator v9.31.0+incompatible
 	github.com/gofiber/fiber/v2 v2.52.0
 	github.com/google/go-github/v59 v59.0.0
-	github.com/google/uuid v1.5.0
 	github.com/whatsauth/watoken v0.1.6
 	go.mongodb.org/mongo-driver v1.11.6
 	golang.org/x/oauth2 v0.17.0
@@ -27,6 +26,7 @@ require (
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
+	github.com/google/uuid v1.5.0 // indirect
 	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/klauspost/compress v1.17.0 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect

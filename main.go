@@ -5,7 +5,6 @@ import (
 	"time"
 
 	"gocroot/config"
-	"gocroot/helper"
 
 	"github.com/aiteung/musik"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -22,8 +21,6 @@ func main() {
 	}
 	// Set the default time zone
 	time.Local = loc
-	//set upload folder temp
-	helper.CreateFolder(config.UploadDir)
 
 	site := fiber.New(config.Iteung)
 	site.Use(cors.New(config.Cors))
