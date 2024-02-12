@@ -42,6 +42,10 @@ func PostDaftarAuthor(c *fiber.Ctx) error {
 		return fiber.ErrForbidden
 	}
 	author := atdb.GetOneDoc[model.Author](config.Mongoconn, "author", bson.M{"phone": phonenumber})
+	var kosong bool
+	if author.Phone == "" {
+		kosong = true
+	}
 	author.Phone = phonenumber
 	if err := c.BodyParser(&author); err != nil {
 		if err != nil {
@@ -52,7 +56,7 @@ func PostDaftarAuthor(c *fiber.Ctx) error {
 			return c.JSON(errors)
 		}
 	}
-	if author.ID.String() == "000000000000000000000000" {
+	if kosong {
 		insertedid := atdb.InsertOneDoc(config.Mongoconn, "author", author)
 		return c.JSON(insertedid)
 	}
