@@ -5,7 +5,6 @@ go 1.21.7
 require (
 	github.com/aiteung/atdb v0.1.5
 	github.com/aiteung/musik v0.0.5
-	github.com/dataped/mapdf v0.1.4
 	github.com/go-playground/validator v9.31.0+incompatible
 	github.com/gofiber/fiber/v2 v2.52.0
 	github.com/google/go-github/v59 v59.0.0
@@ -29,7 +28,6 @@ require (
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/gorilla/websocket v1.5.0 // indirect
-	github.com/jung-kurt/gofpdf v1.16.2 // indirect
 	github.com/klauspost/compress v1.17.0 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
@@ -37,7 +35,6 @@ require (
 	github.com/mattn/go-runewidth v0.0.15 // indirect
 	github.com/microsoft/go-mssqldb v1.0.0 // indirect
 	github.com/montanaflynn/stats v0.7.1 // indirect
-	github.com/otiai10/gosseract/v2 v2.4.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
 	github.com/rogpeppe/go-internal v1.12.0 // indirect

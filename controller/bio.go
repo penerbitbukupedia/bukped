@@ -5,7 +5,6 @@ import (
 	"gocroot/config"
 	"gocroot/helper"
 
-	"github.com/dataped/mapdf"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
 )
@@ -19,7 +18,7 @@ func UploadFotoProfil(ctx *fiber.Ctx) error {
 	// Save the uploaded file to the server
 	id := uuid.New()
 	fname := id.String() + ".jpg"
-	err = mapdf.SaveUploadedFile(file, config.UploadDir, fname)
+	err = helper.SaveUploadedFile(file, config.UploadDir, fname)
 	if err != nil {
 		return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": err.Error()})
 	}
