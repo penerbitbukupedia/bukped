@@ -11,7 +11,7 @@ import (
 	"golang.org/x/oauth2"
 )
 
-func GithubUpload(fileHeader *multipart.FileHeader, fileName string) (content *github.RepositoryContentResponse, response *github.Response, err error) {
+func GithubUpload(authorName string, authorEmail string, fileHeader *multipart.FileHeader, githubOrg string, githubRepo string, branch string, filepath string, replace bool) (content *github.RepositoryContentResponse, response *github.Response, err error) {
 	// Open the file
 	file, err := fileHeader.Open()
 	if err != nil {
@@ -32,23 +32,28 @@ func GithubUpload(fileHeader *multipart.FileHeader, fileName string) (content *g
 	tc := oauth2.NewClient(ctx, ts)
 	client := github.NewClient(tc)
 
+	//set path folder
+	if filepath == "" {
+		filepath = fileHeader.Filename
+	}
+
 	// Membuat opsi untuk mengunggah file
 	opts := &github.RepositoryContentFileOptions{
-		Message: github.String("Upload file"),
+		Message: github.String("Upload file " + filepath),
 		Content: fileContent,
-		Branch:  github.String("main"),
+		Branch:  github.String(branch),
 		Author: &github.CommitAuthor{
-			Name:  github.String(config.GitHubAuthorName),
-			Email: github.String(config.GitHubAuthorEmail),
+			Name:  github.String(authorName),
+			Email: github.String(authorEmail),
 		},
 	}
 
 	// Membuat permintaan untuk mengunggah file
-	content, response, err = client.Repositories.CreateFile(ctx, config.GitHubOwner, config.GitHubRepo, fileName, opts)
-	if err != nil {
-		currentContent, _, _, _ := client.Repositories.GetContents(ctx, config.GitHubOwner, config.GitHubRepo, fileName, nil)
+	content, response, err = client.Repositories.CreateFile(ctx, githubOrg, githubRepo, filepath, opts)
+	if (err != nil) && (replace) {
+		currentContent, _, _, _ := client.Repositories.GetContents(ctx, githubOrg, githubRepo, filepath, nil)
 		opts.SHA = github.String(currentContent.GetSHA())
-		content, response, err = client.Repositories.UpdateFile(ctx, config.GitHubOwner, config.GitHubRepo, fileName, opts)
+		content, response, err = client.Repositories.UpdateFile(ctx, githubOrg, githubRepo, filepath, opts)
 		return
 	}
 
