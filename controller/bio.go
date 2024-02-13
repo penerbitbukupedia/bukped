@@ -12,8 +12,9 @@ func UploadFotoProfil(ctx *fiber.Ctx) error {
 	if err != nil {
 		return ctx.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": err.Error()})
 	}
+	fileName := "anu.jpg"
 	// save to github
-	content, _, err := helper.GithubUpload(file)
+	content, _, err := helper.GithubUpload(file, fileName)
 	if err != nil {
 		return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"content": content, "error": err.Error()})
 	}

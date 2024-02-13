@@ -11,7 +11,7 @@ import (
 	"golang.org/x/oauth2"
 )
 
-func GithubUpload(fileHeader *multipart.FileHeader) (content *github.RepositoryContentResponse, response *github.Response, err error) {
+func GithubUpload(fileHeader *multipart.FileHeader, fileName string) (content *github.RepositoryContentResponse, response *github.Response, err error) {
 	// Open the file
 	file, err := fileHeader.Open()
 	if err != nil {
@@ -44,11 +44,11 @@ func GithubUpload(fileHeader *multipart.FileHeader) (content *github.RepositoryC
 	}
 
 	// Membuat permintaan untuk mengunggah file
-	content, response, err = client.Repositories.CreateFile(ctx, config.GitHubOwner, config.GitHubRepo, fileHeader.Filename, opts)
+	content, response, err = client.Repositories.CreateFile(ctx, config.GitHubOwner, config.GitHubRepo, fileName, opts)
 	if err != nil {
-		currentContent, _, _, _ := client.Repositories.GetContents(ctx, config.GitHubOwner, config.GitHubRepo, fileHeader.Filename, nil)
+		currentContent, _, _, _ := client.Repositories.GetContents(ctx, config.GitHubOwner, config.GitHubRepo, fileName, nil)
 		opts.SHA = github.String(currentContent.GetSHA())
-		content, response, err = client.Repositories.UpdateFile(ctx, config.GitHubOwner, config.GitHubRepo, fileHeader.Filename, opts)
+		content, response, err = client.Repositories.UpdateFile(ctx, config.GitHubOwner, config.GitHubRepo, fileName, opts)
 		return
 	}
 
